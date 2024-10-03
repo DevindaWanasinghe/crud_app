@@ -1,6 +1,6 @@
-import {hairlineWidth} from 'nativewind';
+//import {hairlineWidth} from 'nativewind';
 import React, {useEffect, useState} from 'react';
-import firebase from '@react-native-firebase/app';
+//import firebase from '@react-native-firebase/app';
 import firestore from '@react-native-firebase/firestore';
 import customFirebase from './firebaseConfig';
 
