@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1035211579623",
+    "project_id": "student-managment-app-3a342",
+    "storage_bucket": "student-managment-app-3a342.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035211579623:android:92dd5e1d62995d3c6a8242",
+        "android_client_info": {
+          "package_name": "com.crud_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYgDHbc_FIcI3MRIMF3do_L5Jg1FfJpVQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035211579623:android:6c774e17a5b9d2336a8242",
+        "android_client_info": {
+          "package_name": "com.th3rdwave.safeareacontext"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYgDHbc_FIcI3MRIMF3do_L5Jg1FfJpVQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
