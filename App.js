@@ -130,10 +130,10 @@ const App = () => {
   
 
   return (
-    <SafeAreaView className="flex-1 p-4 bg-white">
+    <SafeAreaView className="flex-1 p-4 bg-[#e0e7ff]">
       <Modal visible={modelStudent}>
         <SafeAreaView>
-          <ScrollView contentContainerStyle={{paddingBottom: 50}}>
+          <ScrollView contentContainerStyle={{paddingBottom: 50}} className="bg-[#e0e7ff]">
             {/* Header Title & Close Button */}
             <View className="flex-row justify-between p-4 ">
               <Text className="text-black text-[22px] font-bold">
@@ -148,7 +148,7 @@ const App = () => {
             </View>
 
             {/* Details */}
-            <View className="px-5 mt-5">
+            <View className="px-5 mt-5 ">
               <Text className="text-[20px] ml-4 mb-2">First Name</Text>
               <TextInput
                 className="p-2 mx-6 mb-3 border-2 border-blue-700 rounded-lg"
@@ -213,14 +213,14 @@ const App = () => {
       </Modal>
 
       {/* Titile & Add Button */}
-      <View className="flex-row justify-between">
-        <Text className="pb-2 pl-2 mt-1 text-3xl text-left text-black ">
+      <View className="flex-row justify-between mb-6">
+        <Text className="p-2 pb-2 pl-2 mt-1 text-3xl  text-black border-2 border-black border-solid rounded-[35px] bg-[#ecfdf5]">
           Student List {users.length}
         </Text>
         <TouchableOpacity
           onPress={handleCreate}
-          className="p-1 border-2 border-black border-solid rounded-2xl">
-          <Text className="pl-2 pr-3 text-[22px]">Add New</Text>
+          className=" border-2 border-black border-solid rounded-[30px] bg-[#ecfdf5]">
+          <Text className=" text-[10px] p-2 pb-2 pl-2 mt-0 text-3xl  text-black">Add New</Text>
         </TouchableOpacity>
       </View>
       <ScrollView>
@@ -229,22 +229,22 @@ const App = () => {
           return (
             <View
               key={item.id}
-              className="flex-row justify-between p-4 my-2 border border-gray-300 rounded">
+              className="flex-row justify-between p-4 my-2 bg-white border rounded border-black-300">
               <View className="">
-                <Text className="text-lg font-bold">{item.name}</Text>
-                <Text className="text-sm text-gray-600">{item.username}</Text>
-                <Text className="text-sm text-gray-500">{item.email}</Text>
+                <Text className="text-lg font-bold text-[#172554]">{item.firstname}</Text>
+                <Text className="text-sm text-[#1e293b]">{item.username}</Text>
+                <Text className="text-sm text-[#334155]">{item.email}</Text>
                 <Text className="text-sm text-gray-500">{item.phone}</Text>
               </View>
 
               {/* Delete Function */}
               <View>
                 <TouchableOpacity onPress={() => handleRemove(item)}>
-                  <Text className="text-red-600">Delete</Text>
+                  <Text className="p-1 text-red-600 border-2 border-solid border-rose-500 rounded-2xl pl-[8px]" >Delete</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => handleEdit(item)}>
-                  <Text className="pt-10 text-blue-600">Edit</Text>
+                  <Text className="p-1 pl-[14px] mt-8 text-blue-600 border-2 border-blue-600 border-solid rounded-2xl">Edit</Text>
                 </TouchableOpacity>
 
               </View>
