@@ -54,7 +54,7 @@ const App = () => {
   const handleRemove = async item => {
     await firestore().collection('students').doc(item.id).delete();
     getListStudent();
-    Alert.alert('Deleted', `User ${item.name} has been deleted.`);
+    Alert.alert('Deleted', `User ${item.firstname} has been deleted.`);
   };
 
   //Add New Studenet Details
@@ -69,30 +69,41 @@ const App = () => {
 
   //Save New Student details to the API
   const handleSave = async () => {
-    if(userId == null){
-      await firestore().collection('students').add({
-        firstname,
-        lastname,
-        username,
-        email,
-        phone,
-      });
-      Alert.alert('Saved', 'New user has been added.');
+    try {
+      if (userId == null) {
+        await firestore().collection('students').add({
+          firstname,
+          lastname,
+          username,
+          email,
+          phone,
+        });
+        Alert.alert('Saved', 'New user has been added.');
+      } else {
+        const docRef = firestore().collection('students').doc(userId);
+        const docSnapshot = await docRef.get();
+        if (docSnapshot.exists) {
+          await docRef.update({
+            firstname,
+            lastname,
+            username,
+            email,
+            phone,
+          });
+          Alert.alert('Saved', 'User has been updated.');
+        } else {
+          Alert.alert('Error', 'User not found.');
+        }
+      }
+      getListStudent();
+      setModelStudent(false);
+      clearForm();
+    } catch (error) {
+      console.error("Error handling save: ", error);
+      Alert.alert('Error', error.message);
     }
-    else{
-      await firestore().collection('students').doc(userId).update({
-        firstname,
-        lastname,
-        username,
-        email,
-        phone,
-      });
-      Alert.alert('Saved', 'User has been updated.');
-    }
-    getListStudent();
-    setModelStudent(false);
-    clearForm();
-    }
+  };
+  
   
 
 
