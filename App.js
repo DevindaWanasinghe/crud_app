@@ -4,7 +4,6 @@ import React, {useEffect, useState} from 'react';
 import firestore from '@react-native-firebase/firestore';
 import customFirebase from './firebaseConfig';
 
-
 import {
   Text,
   View,
@@ -17,20 +16,19 @@ import {
 } from 'react-native';
 
 const App = () => {
-   // State to store list of users
+  // State to store list of users
   const [users, setUsers] = useState([]);
 
-   // State to control visibility -> "Add New Student" modal
+  // State to control visibility -> "Add New Student" modal
   const [modelStudent, setModelStudent] = useState(false);
 
-   // States to store data for a new student
-  const [userId, setUserId] =useState(null);
+  // States to store data for a new student
+  const [userId, setUserId] = useState(null);
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  
 
   //Fetch student data from the API
   useEffect(() => {
@@ -99,52 +97,37 @@ const App = () => {
       setModelStudent(false);
       clearForm();
     } catch (error) {
-      console.error("Error handling save: ", error);
+      console.error('Error handling save: ', error);
       Alert.alert('Error', error.message);
     }
   };
-  
-  
-
-
-
-
 
   const clearForm = () => {
-    setUserId(null)
-    setFirstname("")
-    setLastname("")
-    setUsername("")
-    setEmail("")
-    setPhone("")
-  }
+    setUserId(null);
+    setFirstname('');
+    setLastname('');
+    setUsername('');
+    setEmail('');
+    setPhone('');
+  };
 
-
-
-  const handleEdit = (item) => {
-    setUserId(item.id)
-    setFirstname(item.firstname)
-    setLastname(item.lastname)
-    setUsername(item.username)
-    setEmail(item.email)
-    setPhone(item.phone)
-    setModelStudent(true)
-   
-
-
-  }
-
-
-
-
-
-  
+  const handleEdit = item => {
+    setUserId(item.id);
+    setFirstname(item.firstname);
+    setLastname(item.lastname);
+    setUsername(item.username);
+    setEmail(item.email);
+    setPhone(item.phone);
+    setModelStudent(true);
+  };
 
   return (
     <SafeAreaView className="flex-1 p-4 bg-[#e0e7ff]">
       <Modal visible={modelStudent}>
         <SafeAreaView>
-          <ScrollView contentContainerStyle={{paddingBottom: 50}} className="bg-[#e0e7ff]">
+          <ScrollView
+            contentContainerStyle={{paddingBottom: 50}}
+            className="bg-[#e0e7ff]">
             {/* Header Title & Close Button */}
             <View className="flex-row justify-between p-4 ">
               <Text className="text-black text-[22px] font-bold">
@@ -231,7 +214,9 @@ const App = () => {
         <TouchableOpacity
           onPress={handleCreate}
           className=" border-2 border-black border-solid rounded-[30px] bg-[#ecfdf5]">
-          <Text className=" text-[10px] p-2 pb-2 pl-2 mt-0 text-3xl  text-black">Add New</Text>
+          <Text className=" text-[10px] p-2 pb-2 pl-2 mt-0 text-3xl  text-black">
+            Add New
+          </Text>
         </TouchableOpacity>
       </View>
       <ScrollView>
@@ -242,7 +227,9 @@ const App = () => {
               key={item.id}
               className="flex-row justify-between p-4 my-2 bg-white border rounded border-black-300">
               <View className="">
-                <Text className="text-lg font-bold text-[#172554]">{item.firstname}</Text>
+                <Text className="text-lg font-bold text-[#172554]">
+                  {item.firstname}
+                </Text>
                 <Text className="text-sm text-[#1e293b]">{item.username}</Text>
                 <Text className="text-sm text-[#334155]">{item.email}</Text>
                 <Text className="text-sm text-gray-500">{item.phone}</Text>
@@ -251,13 +238,17 @@ const App = () => {
               {/* Delete Function */}
               <View>
                 <TouchableOpacity onPress={() => handleRemove(item)}>
-                  <Text className="p-1 text-red-600 border-2 border-solid border-rose-500 rounded-2xl pl-[8px]" >Delete</Text>
+                  <Text className="p-1 text-red-600 border-2 border-solid border-rose-500 rounded-2xl pl-[8px]">
+                    Delete
+                  </Text>
                 </TouchableOpacity>
 
+                {/* Edit Function */}
                 <TouchableOpacity onPress={() => handleEdit(item)}>
-                  <Text className="p-1 pl-[14px] mt-8 text-blue-600 border-2 border-blue-600 border-solid rounded-2xl">Edit</Text>
+                  <Text className="p-1 pl-[14px] mt-8 text-blue-600 border-2 border-blue-600 border-solid rounded-2xl">
+                    Edit
+                  </Text>
                 </TouchableOpacity>
-
               </View>
             </View>
           );
