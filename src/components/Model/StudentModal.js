@@ -1,7 +1,6 @@
 import React from 'react';
-import { Modal, SafeAreaView, ScrollView, View, Text } from 'react-native';
-import CustomInput from '../Input Field/CustomInput';
-import CustomButton from '../Button/CustomButton';
+import { Modal, View, Button } from 'react-native';
+import StudentForm from './StudentForm';
 
 const StudentModal = ({
   visible,
@@ -17,27 +16,59 @@ const StudentModal = ({
   setEmail,
   phone,
   setPhone,
+  enrollmentNumber, 
+  setEnrollmentNumber,
+  fatherJob,
+  setFatherJob,
+  motherJob,
+  setMotherJob,
+  brotherCount,
+  setBrotherCount,
+  sisterCount,
+  setSisterCount,
+  townVillage,
+  setTownVillage,
+  whatsappNumber,
+  setWhatsappNumber,
 }) => {
   return (
-    <Modal visible={visible} >
-      <SafeAreaView >
-        <ScrollView contentContainerStyle={{ paddingBottom: 50 }} className="bg-[#e0e7ff]">
-          <View className="flex-row justify-between p-4">
-            <Text className="text-black text-[22px] font-bold">New Student</Text>
-            <CustomButton onPress={handleClose} title="Close" style="text-gray-600 text-[22px] font-bold" />
+    <Modal visible={visible} animationType="slide" transparent={true}>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+        <View style={{ padding: 20, backgroundColor: 'white', borderRadius: 10 }}>
+          <StudentForm
+            firstname={firstname}
+            setFirstname={setFirstname}
+            lastname={lastname}
+            setLastname={setLastname}
+            username={username}
+            setUsername={setUsername}
+            email={email}
+            setEmail={setEmail}
+            phone={phone}
+            setPhone={setPhone}
+            enrollmentNumber={enrollmentNumber} 
+            setEnrollmentNumber={setEnrollmentNumber}
+            fatherJob={fatherJob}
+            setFatherJob={setFatherJob}
+            motherJob={motherJob}
+            setMotherJob={setMotherJob}
+            brotherCount={brotherCount}
+            setBrotherCount={setBrotherCount}
+            sisterCount={sisterCount}
+            setSisterCount={setSisterCount}
+            townVillage={townVillage}
+            setTownVillage={setTownVillage}
+            whatsappNumber={whatsappNumber}
+            setWhatsappNumber={setWhatsappNumber}
+          />
+          <View style={{  marginTop: 10, gap:10 }}>
+            {/* <Button title="Save" onPress={handleSave} /> */}
+            <Button title="Cancel" onPress={handleClose} />
+            <Button title="Save" onPress={handleSave} />
+
           </View>
-
-          {/* Input Fields */}
-          <CustomInput label="First Name" value={firstname} onChangeText={setFirstname} placeholder="Devinda" />
-          <CustomInput label="Last Name" value={lastname} onChangeText={setLastname} placeholder="Wanasinghe" />
-          <CustomInput label="User Name" value={username} onChangeText={setUsername} placeholder="@example00" />
-          <CustomInput label="Email" value={email} onChangeText={setEmail} placeholder="example@gmail.com" />
-          <CustomInput label="Phone Number" value={phone} onChangeText={setPhone} placeholder="+94774567XX" />
-
-          {/* Save Button */}
-          <CustomButton onPress={handleSave} title="Save" style="bg-gray-600 border-2 border-black mx-11 rounded-lg mt-12 " />
-        </ScrollView>
-      </SafeAreaView>
+        </View>
+      </View>
     </Modal>
   );
 };

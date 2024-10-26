@@ -1,68 +1,29 @@
 import firestore from '@react-native-firebase/firestore';
-import { Alert } from 'react-native';
 
-// Function to get the list of students
-export const getListStudent = async () => {
-  try {
-    const userList = [];
-    const querySnapshot = await firestore().collection('students').get();
-    querySnapshot.forEach(documentSnapshot => {
-      userList.push({ ...documentSnapshot.data(), id: documentSnapshot.id });
-    });
-    return userList;
-  } catch (error) {
-    console.error('Error fetching student list: ', error);
-    Alert.alert('Error', 'Failed to fetch student list.');
-    return [];
-  }
+const studentsCollection = firestore().collection('students'); // **Define Firestore collection**
+
+export const getListStudent = async () => { // **Fetch all students**
+    const studentsSnapshot = await studentsCollection.get();
+    return studentsSnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
 };
 
-// Function to add a new student
-export const addStudent = async (studentData) => {
-  try {
-    await firestore().collection('students').add(studentData);
-    Alert.alert('Success', 'New student added successfully.');
-  } catch (error) {
-    console.error('Error adding student: ', error);
-    Alert.alert('Error', 'Failed to add new student.');
-  }
+export const addStudent = async (studentData) => { // **Add a new student**
+    await studentsCollection.add(studentData);
 };
 
-// Function to update an existing student
-export const updateStudent = async (studentId, updatedData) => {
-  try {
-    const docRef = firestore().collection('students').doc(studentId);
-    const docSnapshot = await docRef.get();
-    
-    if (docSnapshot.exists) {
-      await docRef.update(updatedData);
-      Alert.alert('Success', 'Student details updated successfully.');
-    } else {
-      Alert.alert('Error', 'Student not found.');
-    }
-  } catch (error) {
-    console.error('Error updating student: ', error);
-    Alert.alert('Error', 'Failed to update student.');
-  }
+export const updateStudent = async (id, studentData) => { // **Update existing student**
+    await studentsCollection.doc(id).update(studentData);
 };
 
-// Function to delete a student
-export const deleteStudent = async (studentId, studentName) => {
-  try {
-    await firestore().collection('students').doc(studentId).delete();
-    Alert.alert('Deleted', `Student ${studentName} has been deleted.`);
-  } catch (error) {
-    console.error('Error deleting student: ', error);
-    Alert.alert('Error', `Failed to delete student ${studentName}.`);
-  }
+export const deleteStudent = async (id) => { // **Delete a student**
+    await studentsCollection.doc(id).delete();
 };
 
-// Helper function to clear the form after saving or updating
-export const clearForm = (setters) => {
-  setters.setUserId(null);
-  setters.setFirstname('');
-  setters.setLastname('');
-  setters.setUsername('');
-  setters.setEmail('');
-  setters.setPhone('');
+export const clearForm = ({ setUserId, setFirstname, setLastname, setUsername, setEmail, setPhone }) => { // **Clear form fields**
+    //setUserId(null);
+    setFirstname('');
+    setLastname('');
+    setUsername('');
+    setEmail('');
+    setPhone('');
 };
