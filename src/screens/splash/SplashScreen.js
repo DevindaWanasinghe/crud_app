@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     borderRadius: 10,
     elevation: 5,
-    marginTop: 40, // Move logo higher on the screen
+    marginTop: 40, 
   },
   universityText: {
     fontSize: 24,

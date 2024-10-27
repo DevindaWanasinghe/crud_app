@@ -43,8 +43,8 @@ const StudentScreen = () => {
 
   // Generate next enrollment number
   const generateEnrollmentNumber = () => {
-    const currentCount = students.length + 1; // Increment count for new enrollment number
-    const enrollmentNum = `UWU/ICT/22/${String(currentCount).padStart(3, '0')}`; // Format like "UWU/ICT/22/XXX"
+    const currentCount = students.length + 1; 
+    const enrollmentNum = `UWU/ICT/22/${String(currentCount).padStart(3, '0')}`; 
     setEnrollmentNumber(enrollmentNum);
   };
 
