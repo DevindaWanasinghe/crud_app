@@ -3,16 +3,16 @@ import { View, Text, Button, StyleSheet, TouchableOpacity, Image } from 'react-n
 import firestore from '@react-native-firebase/firestore';
 import ProfileForm from './ProfileForm';
 import { ScrollView } from 'react-native-gesture-handler';
-import { launchImageLibrary } from 'react-native-image-picker'; // Import the image picker library
+import { launchImageLibrary } from 'react-native-image-picker'; 
 
 const ProfileScreen = () => {
   const [profileData, setProfileData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
-  const [profileImage, setProfileImage] = useState(null); // State for the profile image
+  const [profileImage, setProfileImage] = useState(null); 
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const doc = await firestore().collection('profiles').doc('your-profile-doc-id').get(); // Replace with your document ID
+      const doc = await firestore().collection('profiles').doc('your-profile-doc-id').get(); 
       if (doc.exists) {
         setProfileData(doc.data());
         setProfileImage(doc.data().profileImage || null); // Load existing profile image
@@ -41,7 +41,7 @@ const ProfileScreen = () => {
       } else if (response.error) {
         console.log('ImagePicker Error: ', response.error);
       } else {
-        setProfileImage(response.assets[0].uri); // Set the profile image URI
+        setProfileImage(response.assets[0].uri); 
       }
     });
   };
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
-    textAlign: 'center', // Center the header
+    textAlign: 'center', 
   },
   coverPhotoContainer: {
     alignItems: 'center',
