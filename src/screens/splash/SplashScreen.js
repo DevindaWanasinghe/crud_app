@@ -11,7 +11,7 @@ const SplashScreen = ({ navigation }) => {
 
   return (
     <View className="items-center justify-center flex-1 bg-gray-100">
-      <Text className="text-3xl font-bold text-blue-500">Welcome to My App</Text>
+      <Text className="text-3xl font-bold text-blue-500">Welcome to UWU ICT '17' Batch</Text>
     </View>
   );
 };

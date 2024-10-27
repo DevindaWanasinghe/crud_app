@@ -1,12 +1,10 @@
-// StudentSearch.js
-
 import React, { useState } from 'react';
 import { View, TextInput, Text, Button, FlatList, TouchableOpacity } from 'react-native';
 
 const StudentSearch = ({ students }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedStudent, setSelectedStudent] = useState(null); // State to hold the selected student's details
-  const [suggestions, setSuggestions] = useState([]); // State to hold suggestions
+  const [selectedStudent, setSelectedStudent] = useState(null); 
+  const [suggestions, setSuggestions] = useState([]); 
 
   const handleSearch = (text) => {
     setSearchTerm(text);
@@ -23,12 +21,12 @@ const StudentSearch = ({ students }) => {
   const selectStudent = (student) => {
     setSelectedStudent(student);
     setSuggestions([]); // Clear suggestions after selection
-    setSearchTerm(''); // Clear the search input
+    setSearchTerm(''); 
   };
 
   const clearSearch = () => {
     setSelectedStudent(null); // Clear selected student
-    setSearchTerm(''); // Clear search input
+    setSearchTerm('');
     setSuggestions([]); // Clear suggestions
   };
 

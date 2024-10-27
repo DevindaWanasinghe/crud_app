@@ -1,5 +1,3 @@
-// components/Model/StudentForm.js
-
 import React from 'react';
 import { View, TextInput, Button, Text, ScrollView } from 'react-native';
 
@@ -28,16 +26,16 @@ const StudentForm = ({
     setTownVillage,
     whatsappNumber,
     setWhatsappNumber,
-    handleSave // Add this prop for handling save action
+    handleSave 
 }) => {
   return (
     <ScrollView style={{ width: 300, padding: 10 }}>
       <TextInput
         value={enrollmentNumber}
         onChangeText={setEnrollmentNumber}
-        placeholder="UWU/ICT/22/XXX" // Placeholder for enrollment number
+        placeholder="UWU/ICT/22/XXX" 
         style={{ padding: 10, marginBottom: 10, borderWidth: 1, borderColor: '#ddd' }}
-        editable={true} // Make it editable to allow entry
+        editable={true} 
       />
       <TextInput
         value={firstname}

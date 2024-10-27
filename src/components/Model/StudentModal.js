@@ -62,7 +62,6 @@ const StudentModal = ({
             setWhatsappNumber={setWhatsappNumber}
           />
           <View style={{  marginTop: 10, gap:10 }}>
-            {/* <Button title="Save" onPress={handleSave} /> */}
             <Button title="Cancel" onPress={handleClose} />
             <Button title="Save" onPress={handleSave} />
 

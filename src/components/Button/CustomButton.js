@@ -4,7 +4,7 @@ import { TouchableOpacity, Text } from 'react-native';
 const CustomButton = ({ onPress, title, className }) => {
     return (
         <TouchableOpacity onPress={onPress} className={className}>
-            <Text>{title}</Text> {/* **Button title** */}
+            <Text>{title}</Text> 
         </TouchableOpacity>
     );
 };
