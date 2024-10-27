@@ -122,17 +122,6 @@ const ProfileForm = ({ onSave, existingData }) => {
                 <Picker.Item label="Palm and Latex Technology and Value Addition [PLT]" value="Palm and Latex Technology and Value Addition [PLT]" />
                 <Picker.Item label="Aquatic Resources and Technology [AQT]" value="Aquatic Resources and Technology [AQT]" />
 
-
-
-
-
-
-
-
-
-
-
-
             </Picker>
 
             <Text className="mb-2 text-sm font-semibold">Select Batch Year</Text>
